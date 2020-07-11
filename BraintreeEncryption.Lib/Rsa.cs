@@ -23,8 +23,7 @@ namespace BraintreeEncryption.Lib
             var rsaKeyParameters = GetRsaKeyParameters(_publicKeyString);
             var rsaEngine = new Pkcs1Encoding(new RsaEngine());
             rsaEngine.Init(true, rsaKeyParameters);
-            var encodedDataToEncrypt = new UTF8Encoding().GetBytes(Convert.ToBase64String(dataToEncrypt));
-            return rsaEngine.ProcessBlock(encodedDataToEncrypt, 0, encodedDataToEncrypt.Length);
+            return rsaEngine.ProcessBlock(dataToEncrypt, 0, dataToEncrypt.Length);
         }
 
         /// <summary>
